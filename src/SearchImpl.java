@@ -1,11 +1,10 @@
-import org.junit.Test;
 
 /**
  * Description: 二分查找算法
  * User: sukai
  * Date: 2018-04-16   16:32
  */
-public class BinarySearch {
+public class SearchImpl implements Search{
 
     /**
      * 二分查找循环实现
@@ -13,7 +12,8 @@ public class BinarySearch {
      * @param x 要查找的数
      * @return 返回数组的下标， 没有找到返回-1
      */
-    public static int binarySearch(int[] arr, int x) {
+    @Override
+    public int binarySearch(int[] arr, int x) {
         int low = 0;
         int high = arr.length - 1;
         while (low <= high){
@@ -37,7 +37,8 @@ public class BinarySearch {
      * @param endIndex 结束位置
      * @return 返回数组的下标， 没有找到返回-1
      */
-     public static int binarySearch(int[] dataSet,int data,int beginIndex,int endIndex){
+    @Override
+     public int binarySearch(int[] dataSet,int data,int beginIndex,int endIndex){
         int midIndex = (beginIndex+endIndex)/2;
         if(data<dataSet[beginIndex] || data>dataSet[endIndex] || beginIndex>endIndex){
             return -1;
@@ -50,12 +51,5 @@ public class BinarySearch {
             return midIndex;
         }
      }
-
-    @Test
-    public void test(){
-        int a[] = {1, 4, 8, 13, 17, 24, 34, 46};
-        System.out.println(binarySearch(a, 34));
-        System.out.println(binarySearch(a, 34, 0, a.length-1));
-    }
 
 }

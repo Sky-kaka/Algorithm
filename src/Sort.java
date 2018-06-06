@@ -1,56 +1,17 @@
-import org.junit.Test;
 
 /**
- * Description: 排序
+ * Description: 排序接口
  * User: sukai
  * Date: 2018-04-16   16:51
  */
-public class Sort {
+public interface Sort {
 
     /**
      * 快速排序
      * @param arr
      * @return
      */
-    private static int[] quickSort(int[] arr, int low, int high) {
-        //1,找到递归算法的出口
-        if( low > high) {
-            return arr;
-        }
-        //2, 存
-        int i = low;
-        int j = high;
-        //3,key
-        int key = arr[low];
-        //4，完成一趟排序
-        while(i < j) {
-            //4.1 ，从右往左找到第一个小于key的数
-            while( i<j && arr[j]>key ){
-                j--;
-            }
-            // 4.2 从左往右找到第一个大于key的数
-            while( i<j && arr[i]<=key ) {
-                i++;
-            }
-            //4.3 交换
-            if(i < j) {
-                int p = arr[i];
-                arr[i] = arr[j];
-                arr[j] = p;
-            }
-        }
-        // 4.4，调整key的位置
-        int p = arr[i];
-        arr[i] = arr[low];
-        arr[low] = p;
-        //5, 对key左边的数快排
-        quickSort(arr, low, i-1 );
-        //6, 对key右边的数快排
-        quickSort(arr, i+1, high);
-
-        return arr;
-    }
-
+    public int[] quickSort(int[] arr, int low, int high);
 
     /**
      * 冒泡排序（思路一）
@@ -58,18 +19,7 @@ public class Sort {
      * @param arr
      * @return
      */
-    public static int[] bubbleSort(int[] arr){
-        for(int i=0; i<arr.length-1; i++){
-            for(int j=0; j<arr.length-i-1; j++){
-                if(arr[j] > arr[j+1]){
-                    arr[j] ^= arr[j+1];
-                    arr[j+1] ^= arr[j];
-                    arr[j] ^= arr[j+1];
-                }
-            }
-        }
-        return arr;
-    }
+    public int[] bubbleSort(int[] arr);
 
     /**
      * 冒泡排序（思路二）
@@ -77,27 +27,5 @@ public class Sort {
      * @param arr
      * @return
      */
-    public static int[] bubbleSort1(int[] arr) {
-        for(int i=0; i<arr.length-1; i++){
-            for(int j=i; j<arr.length-1; j++){
-                if(arr[i] > arr[j+1]){
-                    arr[i] ^= arr[j+1];
-                    arr[j+1] ^= arr[i];
-                    arr[i] ^= arr[j+1];
-                }
-            }
-        }
-        return arr;
-    }
-
-
-    @Test
-    public void test(){
-        int[] arr = {1, 2, 5, 12, 5, 6, 3, 9};
-        arr = quickSort(arr, 0, arr.length-1);
-        for(int x : arr){
-            System.out.println(x);
-        }
-
-    }
+    public int[] bubbleSort1(int[] arr);
 }
