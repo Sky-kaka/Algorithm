@@ -1,3 +1,5 @@
+package main.java;
+
 import org.junit.Test;
 
 /**
@@ -5,15 +7,14 @@ import org.junit.Test;
  * User: sukai
  * Date: 2018-04-16   16:51
  */
-public class SortImpl implements Sort{
+public class Sort{
 
     /**
      * 快速排序
      * @param arr
      * @return
      */
-    @Override
-    public int[] quickSort(int[] arr, int low, int high) {
+    public static int[] quickSort(int[] arr, int low, int high) {
         //1,找到递归算法的出口
         if( low > high) {
             return arr;
@@ -59,8 +60,7 @@ public class SortImpl implements Sort{
      * @param arr
      * @return
      */
-    @Override
-    public int[] bubbleSort(int[] arr){
+    public static int[] bubbleSort(int[] arr){
         for(int i=0; i<arr.length-1; i++){
             for(int j=0; j<arr.length-i-1; j++){
                 if(arr[j] > arr[j+1]){
@@ -79,8 +79,7 @@ public class SortImpl implements Sort{
      * @param arr
      * @return
      */
-    @Override
-    public int[] bubbleSort1(int[] arr) {
+    public static int[] bubbleSort1(int[] arr) {
         for(int i=0; i<arr.length-1; i++){
             for(int j=i; j<arr.length-1; j++){
                 if(arr[i] > arr[j+1]){
@@ -93,4 +92,13 @@ public class SortImpl implements Sort{
         return arr;
     }
 
+    @Test
+    public void testSort(){
+        int[] arr = {1, 2, 5, 12, 5, 6, 3, 9};
+        arr = quickSort(arr, 0, arr.length-1);
+        for(int x : arr){
+            System.out.println(x);
+        }
+
+    }
 }
